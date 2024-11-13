@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { TSignInDto, TSignInResponse, TSignUpDto, TSignUpResponse } from "./types";
+import { TQueryError } from "@/shared/types";
 
 export const authApi = createApi({
     reducerPath: "auth/api",
@@ -15,6 +16,7 @@ export const authApi = createApi({
                 method: "POST",
                 body: signUpDto,
             }),
+            transformErrorResponse: (error: TQueryError) => error.data.message,
         }),
 
         signIn: builder.mutation<TSignInResponse, TSignInDto>({
@@ -23,6 +25,7 @@ export const authApi = createApi({
                 method: "POST",
                 body: signInDto,
             }),
+            transformErrorResponse: (error: TQueryError) => error.data.message,
         }),
     }),
 });

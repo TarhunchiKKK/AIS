@@ -1,50 +1,47 @@
-import { Button } from "@/shared/ui";
+import { Button, ErrorMessage } from "@/shared/ui";
 import { Link } from "react-router-dom";
 import { routes } from "@/shared/constants";
 import { TextField } from "@mui/material";
 import { useSignUpForm } from "./hooks";
 
 export function SignUpForm() {
-    const { formState, changeHandlers, handleSubmit, error } = useSignUpForm();
+    const { formState, handlers, errors } = useSignUpForm();
 
     return (
-        <form onSubmit={handleSubmit} className="w-full px-6 py-6">
-            <h2 className="text-2xl font-semibold text-center mb-6">Sign In</h2>
+        <form onSubmit={handlers.submit} className="w-full px-6 py-6">
+            <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
+
+            {errors.length > 0 && <ErrorMessage content={errors[0]} />}
 
             <div className="mb-4">
-                <TextField
-                    label="Имя"
-                    fullWidth
-                    value={formState.firstName}
-                    onChange={changeHandlers.firstName}
-                />
+                <TextField label="Имя" fullWidth value={formState.firstName} onChange={handlers.changeFirstName} />
             </div>
 
             <div className="mb-4">
-                <TextField
-                    label="Фамилия"
-                    fullWidth
-                    value={formState.lastName}
-                    onChange={changeHandlers.lastName}
-                />
+                <TextField label="Фамилия" fullWidth value={formState.lastName} onChange={handlers.changeLastName} />
             </div>
 
             <div className="mb-4">
-                <TextField
-                    label="Email"
-                    fullWidth
-                    value={formState.email}
-                    onChange={changeHandlers.email}
-                />
+                <TextField label="Email" fullWidth value={formState.email} onChange={handlers.changeEmail} />
             </div>
 
-            <div className="mb-8">
+            <div className="mb-4">
                 <TextField
                     label="Пароль"
                     fullWidth
                     type="password"
                     value={formState.password}
-                    onChange={changeHandlers.password}
+                    onChange={handlers.changePassword}
+                />
+            </div>
+
+            <div className="mb-8">
+                <TextField
+                    label="Подтвердите пароль"
+                    fullWidth
+                    type="password"
+                    value={formState.confirmPassword}
+                    onChange={handlers.changeConfirmPassword}
                 />
             </div>
 
@@ -52,8 +49,8 @@ export function SignUpForm() {
                 <Button size="lg" content="Отправить" />
             </div>
 
-            <Link to={routes.SignUp} className="block mx-auto text-center text-blue">
-                Don't have an account?
+            <Link to={routes.SignIn} className="block mx-auto text-center text-blue">
+                Already have an account?
             </Link>
         </form>
     );

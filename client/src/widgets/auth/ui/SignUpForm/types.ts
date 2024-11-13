@@ -6,4 +6,6 @@ export type TFormState = {
     email: string;
 
     password: string;
+
+    confirmPassword: string;
 };

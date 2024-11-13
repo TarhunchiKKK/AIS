@@ -1,23 +1,20 @@
-import { Button } from "@/shared/ui";
+import { Button, ErrorMessage } from "@/shared/ui";
 import { useSignInForm } from "./hooks";
 import { Link } from "react-router-dom";
 import { routes } from "@/shared/constants";
 import { TextField } from "@mui/material";
 
 export function SignInForm() {
-    const { formState, changeHandlers, handleSubmit, error } = useSignInForm();
+    const { formState, handlers, errors } = useSignInForm();
 
     return (
-        <form onSubmit={handleSubmit} className="w-full px-6 py-6">
+        <form onSubmit={handlers.submit} className="w-full px-6 py-6">
             <h2 className="text-2xl font-semibold text-center mb-6">Sign In</h2>
 
+            {errors.length > 0 && <ErrorMessage content={errors[0]} />}
+
             <div className="mb-4">
-                <TextField
-                    label="Email"
-                    fullWidth
-                    value={formState.email}
-                    onChange={changeHandlers.email}
-                />
+                <TextField label="Email" fullWidth value={formState.email} onChange={handlers.changeEmail} />
             </div>
 
             <div className="mb-8">
@@ -26,7 +23,7 @@ export function SignInForm() {
                     fullWidth
                     type="password"
                     value={formState.password}
-                    onChange={changeHandlers.password}
+                    onChange={handlers.changePassword}
                 />
             </div>
 
