@@ -1,8 +1,10 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
 import { UsersService } from "src/users/users.service";
 import { SignUpDto } from "./dto/sign-up.dto";
 import { GenerateJWTTokenDto } from "./dto/generate-jwt-token.dto";
 import { JwtService } from "@nestjs/jwt";
+import { SignInDto } from "./dto/sign-in.dto";
+import * as argon2 from "argon2";
 
 @Injectable()
 export class AuthService {
@@ -10,6 +12,22 @@ export class AuthService {
         private readonly usersService: UsersService,
         private readonly jwtService: JwtService,
     ) {}
+
+    private async validateUser(signInDto: SignInDto) {
+        const user = await this.usersService.findOneByEmail(signInDto.email);
+
+        if (!user) {
+            throw new BadRequestException("User not found.");
+        }
+
+        const passwordsMath = await argon2.verify(user.password, signInDto.password);
+
+        if (!passwordsMath) {
+            throw new BadRequestException("Incorrect password.");
+        }
+
+        return user;
+    }
 
     private generateJWTToken(dto: GenerateJWTTokenDto) {
         return this.jwtService.sign({
@@ -27,7 +45,20 @@ export class AuthService {
         const jwtToken = this.generateJWTToken(user);
 
         return {
-            data: user,
+            user: user,
+            access: jwtToken,
+        };
+    }
+
+    public async signIn(signDto: SignInDto) {
+        const user = await this.validateUser(signDto);
+
+        const jwtToken = this.generateJWTToken(user);
+
+        const { password: _, ...userWithoutPassword } = user;
+
+        return {
+            user: userWithoutPassword,
             access: jwtToken,
         };
     }
