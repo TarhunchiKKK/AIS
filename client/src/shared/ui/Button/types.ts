@@ -5,5 +5,7 @@ export type TButtonProps = {
 
     content: string;
 
+    disabled?: boolean;
+
     onClick?: () => void;
 };

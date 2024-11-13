@@ -7,6 +7,9 @@ export default {
                 blue: {
                     DEFAULT: "rgb(59 130 246)",
                 },
+                gray: {
+                    DEFAULT: "rgb(229 231 235)",
+                },
             },
         },
     },

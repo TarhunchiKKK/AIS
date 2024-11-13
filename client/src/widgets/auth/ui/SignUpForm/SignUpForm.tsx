@@ -46,7 +46,7 @@ export function SignUpForm() {
             </div>
 
             <div className="flex flex-row justify-center items-center mb-8">
-                <Button size="lg" content="Отправить" />
+                <Button size="lg" content="Отправить" disabled={errors.length > 0} />
             </div>
 
             <Link to={routes.SignIn} className="block mx-auto text-center text-blue">

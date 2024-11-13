@@ -1,4 +1,4 @@
-export const alphaBeticSymbols = "абвгдеёжзийклмнопрстфхцучшщьъыэюя";
+export const alphaBeticSymbols = "абвгдеёжзийклмнопрстфхцучшщьъыэюяabcdefghijklmnopqrstuvwxyz";
 
 export const numericSymbols = "0123456";
 
