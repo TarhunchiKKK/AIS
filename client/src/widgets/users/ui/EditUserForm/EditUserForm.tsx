@@ -1,4 +1,4 @@
-import { Button, ContentWrapper } from "@/shared/ui";
+import { ArrowBack, Button, ContentWrapper } from "@/shared/ui";
 import { useEditUser } from "./hooks";
 import { TEditUserFormProps } from "./types";
 import { UserInfoEditFormPart } from "../UserInfoEditFormPart";
@@ -9,17 +9,21 @@ export function EditUserForm({ user, onSubmit }: TEditUserFormProps) {
 
     return (
         <form onSubmit={handleSubmit} className="w-full">
-            <div className="mb-8">
+            <div className="mb-8 relative">
                 <ContentWrapper>
-                    <h3 className="mb-6 font-bold text-2xl">Основное</h3>
+                    <h3 className="mb-6 text-center font-bold text-2xl">Основное</h3>
 
                     <UserInfoEditFormPart user={formState} onChange={handleChangeState} />
+
+                    <div className="absolute top-4 left-4">
+                        <ArrowBack />
+                    </div>
                 </ContentWrapper>
             </div>
 
             <div className="mb-8">
                 <ContentWrapper>
-                    <h3 className="mb-6 font-bold text-2xl">Должность</h3>
+                    <h3 className="mb-6 text-center font-bold text-2xl">Должность</h3>
 
                     <UserPostDropdowns user={formState} onChange={handleChangeState} />
                 </ContentWrapper>
