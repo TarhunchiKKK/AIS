@@ -47,18 +47,32 @@ export class UsersService {
         });
     }
 
+    public async findOneById(id: string) {
+        const user = await this.usersRepository.findOne({
+            where: {
+                id: id,
+            },
+        });
+
+        if (!user) {
+            throw new BadRequestException("User with such email not exist.");
+        }
+
+        return user;
+    }
+
     public async findOneByEmail(email: string) {
-        const existingUser = await this.usersRepository.findOne({
+        const user = await this.usersRepository.findOne({
             where: {
                 email: email,
             },
         });
 
-        if (!existingUser) {
+        if (!user) {
             throw new BadRequestException("User with such email not exist.");
         }
 
-        return existingUser;
+        return user;
     }
 
     public async changeStatus(changeUserStatusDto: ChangeUserStatusDto) {

@@ -4,7 +4,8 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UsersModule } from "./users/users.module";
 import { AuthModule } from "./auth/auth.module";
-import { RolesModule } from './roles/roles.module';
+import { RolesModule } from "./roles/roles.module";
+import { JwtModule } from "@nestjs/jwt";
 
 @Module({
     imports: [
@@ -24,6 +25,17 @@ import { RolesModule } from './roles/roles.module';
                 password: configService.get("DB_PASSWORD"),
                 autoLoadEntities: true,
                 synchronize: true,
+            }),
+        }),
+        JwtModule.registerAsync({
+            imports: [ConfigModule],
+            inject: [ConfigService],
+            useFactory: (configService: ConfigService) => ({
+                global: true,
+                secret: configService.get("JWT_SECRET"),
+                signOptions: {
+                    expiresIn: configService.get("JWT_EXPIRATION"),
+                },
             }),
         }),
         UsersModule,
