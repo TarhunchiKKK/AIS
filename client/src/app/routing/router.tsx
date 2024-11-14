@@ -5,7 +5,7 @@ import { BaseLayout } from "@/pages/BaseLayout";
 import { AdminPage } from "@/pages/admin";
 import { PrivilegentRoute } from "@/features/roles";
 import { Operations } from "@/features/roles/types";
-import { UserPage } from "@/pages/users";
+import { EditUserPage, UserPage } from "@/pages/users";
 
 export const router = createBrowserRouter([
     {
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <>Home</>,
+                element: <EditUserPage />,
             },
             {
                 element: <BaseLayout />,

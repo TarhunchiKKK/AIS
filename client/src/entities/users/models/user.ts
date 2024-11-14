@@ -1,5 +1,6 @@
 import { TUserBlockingStatus } from "./blockingStatus";
 import { UserRoles, UserStatus } from "./enums";
+import { TUserPost } from "./userPost";
 
 export type TUser = {
     id: string;
@@ -21,4 +22,6 @@ export type TUser = {
 
 export type TFullUser = TUser & {
     blockingStatus: TUserBlockingStatus;
+
+    post: TUserPost;
 };
