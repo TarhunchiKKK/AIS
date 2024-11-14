@@ -12,12 +12,12 @@ export const router = createBrowserRouter([
         path: routes.Home,
         children: [
             {
-                index: true,
-                element: <EditUserPage />,
-            },
-            {
                 element: <BaseLayout />,
                 children: [
+                    {
+                        path: routes.Home,
+                        element: <>Home</>,
+                    },
                     {
                         path: routes.Admin,
                         element: (
@@ -29,6 +29,10 @@ export const router = createBrowserRouter([
                     {
                         path: routes.User,
                         element: <UserPage />,
+                    },
+                    {
+                        path: routes.EditUser,
+                        element: <EditUserPage />,
                     },
                 ],
             },

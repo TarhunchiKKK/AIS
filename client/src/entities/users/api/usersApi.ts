@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { TFullUser } from "../models";
 import { QueryHeadersBuilder } from "@/shared/utils";
-import { TChangeUserStatusDto, TFullUserResponse } from "./types";
-import { TAuthorizedRequest } from "@/shared/types";
+import { TFullUserResponse, TUpdateUserQueryArgs } from "./types";
 import { transformFullUser } from "./helpers";
 
 export const usersApi = createApi({
@@ -12,7 +11,7 @@ export const usersApi = createApi({
         baseUrl: `${import.meta.env.VITE_SERVER_URL}/users`,
     }),
 
-    tagTypes: ["Users"],
+    tagTypes: ["Users", "CurrentUser"],
 
     endpoints: (builder) => ({
         findAll: builder.query<TFullUser[], string>({
@@ -27,15 +26,17 @@ export const usersApi = createApi({
             query: (userId: string) => ({
                 url: `/${userId}`,
             }),
+            providesTags: ["CurrentUser"],
             transformResponse: transformFullUser,
         }),
-        changeUserStatus: builder.mutation<void, TAuthorizedRequest<TChangeUserStatusDto>>({
-            query: (dto: TAuthorizedRequest<TChangeUserStatusDto>) => ({
-                url: "/status",
+        update: builder.mutation<void, TUpdateUserQueryArgs>({
+            query: (dto: TUpdateUserQueryArgs) => ({
+                url: `/${dto.userId}`,
                 method: "PATCH",
                 body: dto.data,
                 headers: new QueryHeadersBuilder().setBearerToken(dto.access).build(),
             }),
+            invalidatesTags: ["Users", "CurrentUser"],
         }),
     }),
 });

@@ -56,6 +56,7 @@ export class UsersService {
         return await this.usersRepository.find({
             relations: {
                 blockingStatus: true,
+                post: true,
             },
         });
     }
@@ -67,6 +68,7 @@ export class UsersService {
             },
             relations: {
                 blockingStatus: true,
+                post: true,
             },
         });
 

@@ -1,19 +1,9 @@
-import { TUserPost } from "@/entities/users";
 import { ContentWrapper } from "@/shared/ui";
-import { UserPostDropdowns } from "@/widgets/users/ui";
-import { useState } from "react";
+import { EditUserForm } from "@/widgets/users/ui/EditUserForm";
+import { useEditUser } from "./hooks";
 
 export function EditUserPage() {
-    const [state, setState] = useState<TUserPost>({
-        department: null,
-        management: null,
-        post: null,
-        id: "",
-    });
+    const { user, onSubmit } = useEditUser();
 
-    return (
-        <ContentWrapper>
-            <UserPostDropdowns post={state} onChange={(value: TUserPost) => setState(value)} />
-        </ContentWrapper>
-    );
+    return <ContentWrapper>{user && <EditUserForm user={user} onSubmit={onSubmit} />}</ContentWrapper>;
 }
