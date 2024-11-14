@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { UserRoles } from "src/roles/enums/user-roles.enum";
+import { UserBlockingStatus } from "./user-blocking-status.entity";
 
 @Entity()
 export class User {
@@ -16,4 +18,11 @@ export class User {
 
     @Column()
     password: string;
+
+    @Column()
+    role: UserRoles;
+
+    @OneToOne(() => UserBlockingStatus, (blockingStatus) => blockingStatus.user)
+    @JoinColumn()
+    blockingStatus: UserBlockingStatus;
 }
