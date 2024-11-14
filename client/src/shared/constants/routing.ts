@@ -4,4 +4,6 @@ export const routes = {
     SignIn: "/auth/sign-in",
 
     SignUp: "/auth/sign-up",
+
+    Admin: "/admin",
 };

@@ -1,6 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AuthLayout, SignInPage, SignUpPage } from "@/pages/auth";
 import { routes } from "@/shared/constants";
+import { BaseLayout } from "@/pages/BaseLayout";
+import { AdminPage } from "@/pages/admin";
+import { PrivilegentRoute } from "@/features/roles";
+import { Operations } from "@/features/roles/types";
 
 export const router = createBrowserRouter([
     {
@@ -9,6 +13,19 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <>Home</>,
+            },
+            {
+                element: <BaseLayout />,
+                children: [
+                    {
+                        path: routes.Admin,
+                        element: (
+                            <PrivilegentRoute operation={Operations.SEE_USERS}>
+                                <AdminPage />
+                            </PrivilegentRoute>
+                        ),
+                    },
+                ],
             },
             {
                 element: <AuthLayout />,
