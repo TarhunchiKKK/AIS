@@ -7,7 +7,7 @@ export function UserPostDropdowns({ post, onChange }: TUserPostDropdownsProps) {
 
     return (
         <div className="flex flex-row justify-between items-center">
-            <div className="mb-4 min-w-32">
+            <div className="mb-4 w-44">
                 <FormControl fullWidth>
                     <InputLabel>Управление </InputLabel>
 
@@ -26,7 +26,7 @@ export function UserPostDropdowns({ post, onChange }: TUserPostDropdownsProps) {
                 </FormControl>
             </div>
 
-            <div className="mb-4 min-w-32">
+            <div className="mb-4 min-w-44">
                 <FormControl fullWidth>
                     <InputLabel>Отдел</InputLabel>
 
@@ -45,7 +45,7 @@ export function UserPostDropdowns({ post, onChange }: TUserPostDropdownsProps) {
                 </FormControl>
             </div>
 
-            <div className="mb-4 min-w-32">
+            <div className="mb-4 min-w-44">
                 <FormControl fullWidth>
                     <InputLabel>Должность</InputLabel>
 
