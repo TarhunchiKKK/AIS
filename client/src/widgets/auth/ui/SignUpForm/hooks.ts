@@ -1,4 +1,4 @@
-import { authApi } from "@/features/auth";
+import { authApi, authTokenManager } from "@/features/auth";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { TFormState } from "./types";
 import { validateFormState } from "./helpers";
@@ -59,7 +59,7 @@ export function useSignUpForm() {
         submit: async (e: FormEvent) => {
             e.preventDefault();
 
-            const { error } = await signUp({
+            const { data, error } = await signUp({
                 firstName: formState.firstName,
                 lastName: formState.lastName,
                 email: formState.email,
@@ -69,6 +69,7 @@ export function useSignUpForm() {
             if (error) {
                 setValidationErrors([error as string]);
             } else {
+                authTokenManager.setToken(data.access);
                 navigate(routes.Home);
             }
         },
