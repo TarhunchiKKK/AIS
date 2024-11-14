@@ -1,4 +1,4 @@
-import { TFullUser, UserStatus } from "../models";
+import { TFullUser, TUserBlockingStatus, UserStatus } from "../models";
 
 export type TCreateUsserDto = {
     firstName: string;
@@ -22,4 +22,8 @@ export type TChangeUserStatusDto = {
 
 export type TFullUserResponse = TFullUser & {
     createdAt: string;
+
+    blockingStatus: TUserBlockingStatus & {
+        blokingTime: string | null;
+    };
 };

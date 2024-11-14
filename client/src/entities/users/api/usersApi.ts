@@ -23,6 +23,12 @@ export const usersApi = createApi({
             providesTags: ["Users"],
             transformResponse: (response: TFullUserResponse[]) => response.map(transformFullUser),
         }),
+        findOne: builder.query<TFullUser, string>({
+            query: (userId: string) => ({
+                url: `/${userId}`,
+            }),
+            transformResponse: transformFullUser,
+        }),
         changeUserStatus: builder.mutation<void, TAuthorizedRequest<TChangeUserStatusDto>>({
             query: (dto: TAuthorizedRequest<TChangeUserStatusDto>) => ({
                 url: "/status",

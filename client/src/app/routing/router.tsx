@@ -5,6 +5,7 @@ import { BaseLayout } from "@/pages/BaseLayout";
 import { AdminPage } from "@/pages/admin";
 import { PrivilegentRoute } from "@/features/roles";
 import { Operations } from "@/features/roles/types";
+import { UserPage } from "@/pages/users";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
                                 <AdminPage />
                             </PrivilegentRoute>
                         ),
+                    },
+                    {
+                        path: routes.User,
+                        element: <UserPage />,
                     },
                 ],
             },

@@ -1,11 +1,12 @@
 import { dateFormatter } from "@/shared/utils";
 import { TUserData } from "./types";
+import { Link } from "react-router-dom";
+import { routes } from "@/shared/constants";
 
 export const renderHeaders = () => {
     return (
         <tr>
-            <th className="text-left">Фамилия</th>
-            <th className="text-left">Имя</th>
+            <th className="text-left">ФИО</th>
             <th className="text-left">Email</th>
             <th className="text-left">дата регистрации</th>
             <th className="text-left">Статус</th>
@@ -19,9 +20,9 @@ export const renderRow = (userData: TUserData) => {
             key={userData.id}
             className="table-row h-12 px-2 py-4 rounded-lg overflow-hidden hover:bg-gray-200 cursor-pointer"
         >
-            <td className="text-left">{userData.lastName}</td>
-
-            <td className="text-left">{userData.firstName}</td>
+            <td className="text-left">
+                <Link to={routes.createuserRoute(userData.id)}>{`${userData.lastName} ${userData.firstName}`}</Link>
+            </td>
 
             <td className="text-left">{userData.email}</td>
 

@@ -18,10 +18,7 @@ export class RolesController {
         @Req() request: TAuthorizedRequest,
         @Query("operation") operation: Operations,
     ) {
-        console.log(operation);
-
         const user = await this.usersService.findOneById(request.user.id);
-        console.log(user);
 
         return {
             available: this.rolesService.checkOperationAvailability({

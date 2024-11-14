@@ -52,6 +52,9 @@ export class UsersService {
             where: {
                 id: id,
             },
+            relations: {
+                blockingStatus: true,
+            },
         });
 
         if (!user) {
