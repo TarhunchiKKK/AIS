@@ -6,7 +6,7 @@ export type TUserBlockingStatus = {
 
     status: UserStatus;
 
-    blokingTime: Date | null;
+    blockingTime: Date | null;
 
     reason: string | null;
 

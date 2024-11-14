@@ -8,7 +8,7 @@ export function transformFullUser(user: TFullUserResponse): TFullUser {
         createdAt: dateFormatter.createDateFromStr(user.createdAt),
         blockingStatus: {
             ...user.blockingStatus,
-            blokingTime: user.blockingStatus.blokingTime
+            blockingTime: user.blockingStatus.blokingTime
                 ? dateFormatter.createDateFromStr(user.blockingStatus.blokingTime)
                 : null,
         },

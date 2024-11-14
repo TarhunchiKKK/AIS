@@ -10,7 +10,7 @@ export const renderUserStatus = (userStatus: TUserBlockingStatus) => {
             return (
                 <>
                     <span className="text-red-600">
-                        Blocked from {dateFormatter.formatDate(userStatus.blokingTime!)}
+                        Blocked from {dateFormatter.formatDate(userStatus.blockingTime!)}
                     </span>
 
                     <span className="text-red-600">Reason: {userStatus.reason!}</span>

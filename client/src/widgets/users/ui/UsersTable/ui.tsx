@@ -21,7 +21,7 @@ export const renderRow = (userData: TUserData) => {
             className="table-row h-12 px-2 py-4 rounded-lg overflow-hidden hover:bg-gray-200 cursor-pointer"
         >
             <td className="text-left">
-                <Link to={routes.createuserRoute(userData.id)}>{`${userData.lastName} ${userData.firstName}`}</Link>
+                <Link to={routes.createUserRoute(userData.id)}>{`${userData.lastName} ${userData.firstName}`}</Link>
             </td>
 
             <td className="text-left">{userData.email}</td>

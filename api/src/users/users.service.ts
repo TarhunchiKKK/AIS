@@ -91,7 +91,7 @@ export class UsersService {
         return user;
     }
 
-    public async update(id: string, updateuserDto: UpdateUserDto) {
+    public async update(id: string, updateUserDto: UpdateUserDto) {
         const user = await this.usersRepository.findOne({
             where: {
                 id: id,
@@ -109,17 +109,17 @@ export class UsersService {
         await Promise.all([
             this.userStatusesRepository.update(user.blockingStatus.id, {
                 ...user.blockingStatus,
-                ...updateuserDto.blockingStatus,
+                ...updateUserDto.blockingStatus,
                 blockingTime:
-                    updateuserDto.blockingStatus.status === UserStatus.BLOCKED ? new Date() : null,
+                    updateUserDto.blockingStatus.status === UserStatus.BLOCKED ? new Date() : null,
             }),
             this.userPostsRepository.update(user.post.id, {
                 ...user.post,
-                ...updateuserDto.post,
+                ...updateUserDto.post,
             }),
             this.usersRepository.update(id, {
-                firstName: updateuserDto.firstName,
-                lastName: updateuserDto.lastName,
+                firstName: updateUserDto.firstName,
+                lastName: updateUserDto.lastName,
             }),
         ]);
     }
