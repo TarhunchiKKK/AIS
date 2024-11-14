@@ -9,7 +9,7 @@ import {
     MaxLengthVaidator,
     MinLengthValidator,
     ValidationBuilder,
-} from "@/utils/validation";
+} from "@/shared/utils/validation";
 
 export function validateFirstName(firstName: string) {
     return new ValidationBuilder(firstName)

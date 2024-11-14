@@ -1,1 +1,1 @@
-export type { TQueryError } from "./api";
+export type { TQueryError, TAuthorizedRequest } from "./api";

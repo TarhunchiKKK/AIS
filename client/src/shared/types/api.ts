@@ -9,3 +9,9 @@ export type TQueryError = {
 
     status: number;
 };
+
+export type TAuthorizedRequest<T> = {
+    data: T;
+
+    access: string;
+};
