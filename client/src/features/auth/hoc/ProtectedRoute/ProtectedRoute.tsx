@@ -9,5 +9,5 @@ export function ProtectedRoute({ redirectRoute, children }: TProtectedRouteProps
         return <Navigate to={redirectRoute} replace={true} />;
     }
 
-    return { children };
+    return <>{children}</>;
 }

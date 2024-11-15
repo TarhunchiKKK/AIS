@@ -7,18 +7,24 @@ import { PrivilegentRoute } from "@/features/roles";
 import { Operations } from "@/features/roles/types";
 import { EditUserPage, UserPage } from "@/pages/users";
 import { ModalContextProvider } from "@/shared/ui";
+import { HomePage } from "@/pages/home";
+import { ProtectedRoute } from "@/features/auth";
 
 export const router = createBrowserRouter([
     {
         path: routes.Home,
         children: [
             {
+                path: routes.Home,
+                element: (
+                    <ProtectedRoute redirectRoute={routes.SignIn}>
+                        <HomePage />
+                    </ProtectedRoute>
+                ),
+            },
+            {
                 element: <BaseLayout />,
                 children: [
-                    {
-                        path: routes.Home,
-                        element: <>Home</>,
-                    },
                     {
                         path: routes.Admin,
                         element: (
