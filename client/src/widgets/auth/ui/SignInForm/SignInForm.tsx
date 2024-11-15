@@ -32,7 +32,7 @@ export function SignInForm() {
             </div>
 
             <Link to={routes.SignUp} className="block mx-auto text-center text-blue">
-                Don't have an account?
+                Нет аккаунта?
             </Link>
         </form>
     );

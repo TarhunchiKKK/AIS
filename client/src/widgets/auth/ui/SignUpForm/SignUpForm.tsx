@@ -50,7 +50,7 @@ export function SignUpForm() {
             </div>
 
             <Link to={routes.SignIn} className="block mx-auto text-center text-blue">
-                Already have an account?
+                Уже есть аккаунт?
             </Link>
         </form>
     );

@@ -8,7 +8,7 @@ export const renderHeaders = () => {
         <tr>
             <th className="text-left">ФИО</th>
             <th className="text-left">Email</th>
-            <th className="text-left">дата регистрации</th>
+            <th className="text-left">Дата регистрации</th>
             <th className="text-left">Статус</th>
         </tr>
     );
