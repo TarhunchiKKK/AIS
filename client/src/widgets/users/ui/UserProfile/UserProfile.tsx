@@ -5,13 +5,18 @@ import { renderUserPost, renderUserStatus } from "./ui";
 import { Link } from "react-router-dom";
 import { routes } from "@/shared/constants";
 import { iconSize } from "./constants";
+import { ArrowBack } from "@/shared/ui";
 
 export function UserProfile({ user }: TUserProfileProps) {
     return (
         <>
+            <div className="flex flex-row justify-start mb-2">
+                <ArrowBack />
+            </div>
+
             <div className="flex flex-row justify-between items-start">
                 <div className="flex flex-col justify-between items-start gap-3">
-                    <span>{`${user.lastName} ${user.firstName}`}</span>
+                    <span className="text-xl font-bold">{`${user.lastName} ${user.firstName}`}</span>
                     <span>{user.email}</span>
                     <span>{`Зарегистрирован(а) ${dateFormatter.formatDate(user.createdAt)}`}</span>
                     {renderUserPost(user.post)}
