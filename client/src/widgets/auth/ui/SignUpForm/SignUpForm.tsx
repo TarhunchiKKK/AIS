@@ -8,8 +8,8 @@ export function SignUpForm() {
     const { formState, handlers, validationErrors } = useSignUpForm();
 
     return (
-        <form onSubmit={handlers.submit} className="w-full px-6 py-6">
-            <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
+        <form onSubmit={handlers.submit} className="w-full px-4 py-2 md:p-6">
+            <h2 className="text-xl md:text-2xl font-semibold text-center mb-4 md:mb-6">Sign Up</h2>
 
             {validationErrors.length > 0 && <ErrorMessage content={validationErrors[0]} />}
 
@@ -35,7 +35,7 @@ export function SignUpForm() {
                 />
             </div>
 
-            <div className="mb-8">
+            <div className="mb-4 md:mb-8">
                 <TextField
                     label="Подтвердите пароль"
                     fullWidth
@@ -45,7 +45,7 @@ export function SignUpForm() {
                 />
             </div>
 
-            <div className="flex flex-row justify-center items-center mb-8">
+            <div className="flex flex-row justify-center items-center mb-4 md:mb-8">
                 <Button size="lg" content="Отправить" disabled={validationErrors.length > 0} />
             </div>
 

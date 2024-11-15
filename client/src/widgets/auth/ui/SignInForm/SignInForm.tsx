@@ -8,8 +8,8 @@ export function SignInForm() {
     const { formState, handlers, errors } = useSignInForm();
 
     return (
-        <form onSubmit={handlers.submit} className="w-full px-6 py-6">
-            <h2 className="text-2xl font-semibold text-center mb-6">Sign In</h2>
+        <form onSubmit={handlers.submit} className="w-full px-4 py-2 md:p-6">
+            <h2 className="text-xl md:text-2xl font-semibold text-center mb-4 md:mb-6">Sign In</h2>
 
             {errors.length > 0 && <ErrorMessage content={errors[0]} />}
 
@@ -17,7 +17,7 @@ export function SignInForm() {
                 <TextField label="Email" fullWidth value={formState.email} onChange={handlers.changeEmail} />
             </div>
 
-            <div className="mb-8">
+            <div className="mb-4 md:mb-8">
                 <TextField
                     label="Пароль"
                     fullWidth
@@ -27,7 +27,7 @@ export function SignInForm() {
                 />
             </div>
 
-            <div className="flex flex-row justify-center items-center mb-8">
+            <div className="flex flex-row justify-center items-center mb-4 md:mb-8">
                 <Button size="lg" content="Отправить" />
             </div>
 
