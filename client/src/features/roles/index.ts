@@ -1,2 +1,2 @@
 export { rolesApi } from "./api";
-export { PrivilegentRoute } from "./hoc";
+export { PrivilegentRoute, PrivilegentElement } from "./hoc";

@@ -29,6 +29,13 @@ export const usersApi = createApi({
             providesTags: ["CurrentUser"],
             transformResponse: transformFullUser,
         }),
+        findMe: builder.query<TFullUser, string>({
+            query: (authToken: string) => ({
+                url: "/me",
+                headers: new QueryHeadersBuilder().setBearerToken(authToken).build(),
+            }),
+            transformResponse: transformFullUser,
+        }),
         update: builder.mutation<void, TUpdateUserQueryArgs>({
             query: (dto: TUpdateUserQueryArgs) => ({
                 url: `/${dto.userId}`,

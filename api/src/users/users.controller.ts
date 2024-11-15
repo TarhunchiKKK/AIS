@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, UseGuards } from "@nestjs/common";
+import { Controller, Get, Post, Body, Patch, Param, UseGuards, Req } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
@@ -6,6 +6,7 @@ import { ProvidesOperation } from "src/roles/decorators/provides-operation.decor
 import { JwtAuthGuard } from "src/auth/guards/jwt-auth.guard";
 import { Operations } from "src/roles/enums/operations.enum";
 import { RolesGuard } from "src/roles/guards/roles.guard";
+import { TAuthorizedRequest } from "src/auth/types/authorized-request.type";
 
 @Controller("users")
 export class UsersController {
@@ -21,6 +22,12 @@ export class UsersController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     public async findAll() {
         return this.usersService.findAll();
+    }
+
+    @Get("/me")
+    @UseGuards(JwtAuthGuard)
+    public async findMe(@Req() request: TAuthorizedRequest) {
+        return await this.usersService.findOneById(request.user.id);
     }
 
     @Get(":id")
