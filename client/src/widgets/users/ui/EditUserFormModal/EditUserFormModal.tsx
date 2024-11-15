@@ -1,6 +1,7 @@
 import { Button } from "@/shared/ui";
 import { TEditUserFormModalProps } from "./types";
 
+// this modal will be opened, when edit user form submits
 export function EditUserFormModal({ onSubmit }: TEditUserFormModalProps) {
     return (
         <>

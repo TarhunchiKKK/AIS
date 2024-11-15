@@ -3,6 +3,7 @@ import { JwtService } from "@nestjs/jwt";
 import { TRequest } from "src/shared/types/request.type";
 import { TUserProfile } from "../types/user-profile.type";
 
+// this guard checks JST token in request headers and define user from this token
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
     constructor(private readonly jwtService: JwtService) {}

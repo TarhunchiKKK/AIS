@@ -3,6 +3,7 @@ import { TModalContextProps } from "./types";
 import { ModalContext } from "./constants";
 import { createPortal } from "react-dom";
 
+// reused context for modal windows
 export function ModalContextProvider({ children }: TModalContextProps) {
     const [element, setElement] = useState<JSX.Element | null>();
 

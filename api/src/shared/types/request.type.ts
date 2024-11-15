@@ -1,5 +1,6 @@
 import { IncomingMessage } from "http";
 
+// incoming request type
 export type TRequest = IncomingMessage & {
     query?: any;
 

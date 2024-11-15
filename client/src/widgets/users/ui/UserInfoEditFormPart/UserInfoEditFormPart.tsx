@@ -3,6 +3,7 @@ import { useInputs } from "./hooks";
 import { TUserInfoEditFormPartProps } from "./types";
 import { UserStatus } from "@/entities/users";
 
+// user edit form first part
 export function UserInfoEditFormPart({ user, onChange }: TUserInfoEditFormPartProps) {
     const { changeHandlers } = useInputs(user, onChange);
 

@@ -12,10 +12,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => (
-        <div style={{ margin: "auto", width: "min-content" }}>
-            <ArrowBack />
-        </div>
-    ),
+    render: () => <ArrowBack />,
     decorators: [withRouter],
 };

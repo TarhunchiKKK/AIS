@@ -1,3 +1,3 @@
 export { AuthLayout } from "./layout";
-export { SignInPage } from "./sign-in";
-export { SignUpPage } from "./sign-up";
+export { SignInPage } from "./SignInPage";
+export { SignUpPage } from "./SignUpPage";

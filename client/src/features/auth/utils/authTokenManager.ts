@@ -1,3 +1,4 @@
+// manages auth token in localStorage
 export const authTokenManager = {
     authTokenKey: import.meta.env.VITE_TOKEN_LOCALSTORAGE_KEY,
 
@@ -11,5 +12,5 @@ export const authTokenManager = {
 
     resetToken() {
         localStorage.removeItem(this.authTokenKey);
-    }
-}
+    },
+};

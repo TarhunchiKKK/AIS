@@ -5,10 +5,11 @@ import { Navigate } from "react-router-dom";
 import { routes } from "@/shared/constants";
 import { Loader } from "@/shared/ui";
 
+// determines whether the user can view this page
 export function PrivilegentRoute({ operation, children }: TPrivilegentRouteProps) {
     const authToken = authTokenManager.getToken();
 
-    // отсутствует токен - нет смысла делать запрос
+    // token not exists - is no point in making a request
     if (!authToken) {
         return <Navigate to={routes.Home} replace={true} />;
     }
@@ -18,13 +19,13 @@ export function PrivilegentRoute({ operation, children }: TPrivilegentRouteProps
         data: operation,
     });
 
-    // ошибка при запросе/нет прав
+    // error in request or user have no permissions
     if (error || data?.available === false) {
         return <Navigate to={routes.Home} replace={true} />;
     }
 
     switch (data?.available) {
-        // запрос еще не завершен
+        // request is pending
         case undefined: {
             return (
                 <div className="fixed top-0 left-0 w-screen h-screen z-50">
@@ -32,7 +33,7 @@ export function PrivilegentRoute({ operation, children }: TPrivilegentRouteProps
                 </div>
             );
         }
-        // есть права
+        // user have neccessary permissions
         case true: {
             return <>{children}</>;
         }

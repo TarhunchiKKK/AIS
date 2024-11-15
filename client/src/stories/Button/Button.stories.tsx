@@ -15,11 +15,7 @@ export const Small: Story = {
         content: "Small",
         size: "sm",
     },
-    render: (args) => (
-        <div style={{ margin: "auto" }}>
-            <Button {...args} />
-        </div>
-    ),
+    render: (args) => <Button {...args} />,
 };
 
 export const Middle: Story = {
@@ -27,11 +23,7 @@ export const Middle: Story = {
         content: "Middle",
         size: "md",
     },
-    render: (args) => (
-        <div style={{ margin: "auto" }}>
-            <Button {...args} />
-        </div>
-    ),
+    render: (args) => <Button {...args} />,
 };
 
 export const Large: Story = {
@@ -39,9 +31,5 @@ export const Large: Story = {
         content: "Large",
         size: "lg",
     },
-    render: (args) => (
-        <div style={{ margin: "auto" }}>
-            <Button {...args} />
-        </div>
-    ),
+    render: (args) => <Button {...args} />,
 };

@@ -7,6 +7,7 @@ import { Operations } from "../enums/operations.enum";
 import { UsersService } from "src/users/users.service";
 import { TUserProfile } from "src/auth/types/user-profile.type";
 
+// this guard define can user perform the operation
 @Injectable()
 export class RolesGuard implements CanActivate {
     constructor(

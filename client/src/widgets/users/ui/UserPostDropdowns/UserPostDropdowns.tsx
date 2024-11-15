@@ -2,6 +2,7 @@ import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 import { TUserPostDropdownsProps } from "./types";
 import { useDropdowns } from "./hooks";
 
+// user edit form second part
 export function UserPostDropdowns({ user, onChange }: TUserPostDropdownsProps) {
     const { dropdownsState, changeHandlers } = useDropdowns(user, onChange);
 

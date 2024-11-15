@@ -1,3 +1,4 @@
+// this object defines the routing in the application
 export const routes = {
     Home: "/",
 
