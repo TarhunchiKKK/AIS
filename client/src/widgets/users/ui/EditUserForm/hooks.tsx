@@ -5,6 +5,7 @@ import { trimFormState, validateFormState } from "./helpers";
 import { authTokenManager } from "@/features/auth";
 import { ModalContext } from "@/shared/ui";
 import { EditUserFormModal } from "../EditUserFormModal";
+import { toast } from "react-toastify";
 
 export function useEditUser(user: TUserData, onSubmit: () => void) {
     const { open: openModal, close: closeModal } = useContext(ModalContext);
@@ -31,6 +32,8 @@ export function useEditUser(user: TUserData, onSubmit: () => void) {
         onSubmit();
 
         closeModal();
+
+        toast("Изменения сохранены.");
     };
 
     const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {

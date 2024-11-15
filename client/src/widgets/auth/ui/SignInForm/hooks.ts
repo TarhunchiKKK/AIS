@@ -4,6 +4,7 @@ import { TFormState } from "./types";
 import { validateFormState } from "./helpers";
 import { useNavigate } from "react-router-dom";
 import { routes } from "@/shared/constants";
+import { toast } from "react-toastify";
 
 export function useSignInForm() {
     const navigate = useNavigate();
@@ -45,6 +46,7 @@ export function useSignInForm() {
             } else {
                 authTokenManager.setToken(data.access);
                 navigate(routes.Home);
+                toast("Вход выполнен.");
             }
         },
     };
