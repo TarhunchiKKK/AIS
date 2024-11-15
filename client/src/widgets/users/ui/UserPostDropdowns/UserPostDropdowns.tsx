@@ -6,7 +6,7 @@ export function UserPostDropdowns({ user, onChange }: TUserPostDropdownsProps) {
     const { dropdownsState, changeHandlers } = useDropdowns(user, onChange);
 
     return (
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-col lg:flex-row justify-between items-center">
             <div className="mb-4 w-[235px]">
                 <FormControl fullWidth>
                     <InputLabel>Управление</InputLabel>

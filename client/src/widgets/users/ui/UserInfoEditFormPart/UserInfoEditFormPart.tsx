@@ -7,7 +7,7 @@ export function UserInfoEditFormPart({ user, onChange }: TUserInfoEditFormPartPr
     const { changeHandlers } = useInputs(user, onChange);
 
     return (
-        <div className="flex flex-row justify-between items-start">
+        <div className="flex w-[235px] mx-auto sm:w-auto flex-col md:flex-row justify-between items-center md:items-start">
             <div className="mb-4 h-full flex flex-col justify-between gap-4">
                 <TextField
                     label="Фамилия"
@@ -19,8 +19,8 @@ export function UserInfoEditFormPart({ user, onChange }: TUserInfoEditFormPartPr
                 <TextField label="Имя" variant="outlined" value={user.firstName} onChange={changeHandlers.firstName} />
             </div>
 
-            <div className="mb-4 h-full flex flex-col justify-between gap-4">
-                <div className="w-[235px]">
+            <div className="mb-4 w-full sm:w-auto h-full flex flex-col justify-between gap-4">
+                <div className="w-full sm:w-[235px]">
                     <FormControl fullWidth>
                         <InputLabel>Статус</InputLabel>
 

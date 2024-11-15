@@ -9,23 +9,23 @@ export function EditUserForm({ user, onSubmit }: TEditUserFormProps) {
 
     return (
         <form className="w-full">
+            <div className="flex flex-row justify-start">
+                <ArrowBack />
+            </div>
+
             {validationErrors.length > 0 && <ErrorMessage content={validationErrors[0]} />}
 
-            <div className="mb-8 relative">
+            <div className="mb-4 md:mb-8 relative">
                 <ContentWrapper>
-                    <h3 className="mb-6 text-center font-bold text-2xl">Основное</h3>
+                    <h3 className="mb-3 md:mb-6 text-center font-bold text-lg sm:text-xl lg:text-2xl">Основное</h3>
 
                     <UserInfoEditFormPart user={formState} onChange={handleChangeState} />
-
-                    <div className="absolute top-4 left-4">
-                        <ArrowBack />
-                    </div>
                 </ContentWrapper>
             </div>
 
-            <div className="mb-8">
+            <div className="mb-4 md:mb-8">
                 <ContentWrapper>
-                    <h3 className="mb-6 text-center font-bold text-2xl">Должность</h3>
+                    <h3 className="mb-3 md:mb-6 text-center font-bold text-lg sm:text-xl lg:text-2xl">Должность</h3>
 
                     <UserPostDropdowns user={formState} onChange={handleChangeState} />
                 </ContentWrapper>
