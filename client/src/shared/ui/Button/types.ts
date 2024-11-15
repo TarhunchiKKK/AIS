@@ -1,3 +1,5 @@
+import { MouseEvent } from "react";
+
 export type TButtonSize = "sm" | "md" | "lg";
 
 export type TButtonProps = {
@@ -7,5 +9,5 @@ export type TButtonProps = {
 
     disabled?: boolean;
 
-    onClick?: () => void;
+    onClick?: (() => void) | ((e: MouseEvent<HTMLButtonElement>) => void);
 };

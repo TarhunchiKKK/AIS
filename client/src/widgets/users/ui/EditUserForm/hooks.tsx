@@ -1,10 +1,13 @@
 import { usersApi } from "@/entities/users";
 import { TFormState, TUserData } from "./types";
-import { FormEvent, useState } from "react";
+import { useContext, useState, MouseEvent } from "react";
 import { trimFormState, validateFormState } from "./helpers";
 import { authTokenManager } from "@/features/auth";
+import { ModalContext } from "@/shared/ui";
+import { EditUserFormModal } from "../EditUserFormModal";
 
 export function useEditUser(user: TUserData, onSubmit: () => void) {
+    const { open: openModal, close: closeModal } = useContext(ModalContext);
     const [updateUser] = usersApi.useUpdateMutation();
 
     const [formState, setFormState] = useState(() => trimFormState(user));
@@ -16,9 +19,7 @@ export function useEditUser(user: TUserData, onSubmit: () => void) {
         setFormState(newState);
     };
 
-    const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-
+    const handleSubmit = async () => {
         const authToken = authTokenManager.getToken();
 
         await updateUser({
@@ -28,12 +29,19 @@ export function useEditUser(user: TUserData, onSubmit: () => void) {
         });
 
         onSubmit();
+
+        closeModal();
+    };
+
+    const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        openModal(<EditUserFormModal onSubmit={handleSubmit} />);
     };
 
     return {
         formState,
         validationErrors,
         handleChangeState,
-        handleSubmit,
+        handleButtonClick,
     };
 }

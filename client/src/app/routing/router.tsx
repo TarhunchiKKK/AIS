@@ -6,6 +6,7 @@ import { AdminPage } from "@/pages/admin";
 import { PrivilegentRoute } from "@/features/roles";
 import { Operations } from "@/features/roles/types";
 import { EditUserPage, UserPage } from "@/pages/users";
+import { ModalContextProvider } from "@/shared/ui";
 
 export const router = createBrowserRouter([
     {
@@ -32,7 +33,11 @@ export const router = createBrowserRouter([
                     },
                     {
                         path: routes.EditUser,
-                        element: <EditUserPage />,
+                        element: (
+                            <ModalContextProvider>
+                                <EditUserPage />
+                            </ModalContextProvider>
+                        ),
                     },
                 ],
             },

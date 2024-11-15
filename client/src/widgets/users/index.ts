@@ -1,1 +1,1 @@
-export { UsersTable, UserProfile } from "./ui";
+export { UsersTable, UserProfile, EditUserForm, EditUserFormModal } from "./ui";

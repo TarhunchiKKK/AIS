@@ -5,10 +5,10 @@ import { UserInfoEditFormPart } from "../UserInfoEditFormPart";
 import { UserPostDropdowns } from "../UserPostDropdowns";
 
 export function EditUserForm({ user, onSubmit }: TEditUserFormProps) {
-    const { formState, validationErrors, handleChangeState, handleSubmit } = useEditUser(user, onSubmit);
+    const { formState, validationErrors, handleChangeState, handleButtonClick } = useEditUser(user, onSubmit);
 
     return (
-        <form onSubmit={handleSubmit} className="w-full">
+        <form className="w-full">
             {validationErrors.length > 0 && <ErrorMessage content={validationErrors[0]} />}
 
             <div className="mb-8 relative">
@@ -32,7 +32,12 @@ export function EditUserForm({ user, onSubmit }: TEditUserFormProps) {
             </div>
 
             <div className="flex justify-center">
-                <Button content="Отправить" size="lg" disabled={validationErrors.length > 0} />
+                <Button
+                    content="Отправить"
+                    size="lg"
+                    disabled={validationErrors.length > 0}
+                    onClick={handleButtonClick}
+                />
             </div>
         </form>
     );
