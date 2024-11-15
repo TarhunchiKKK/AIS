@@ -13,6 +13,7 @@ import { UserBlockingStatus } from "./entities/user-blocking-status.entity";
 import { UserStatus } from "./enums/user-status.enum";
 import { UserPost } from "./entities/user-post.entity";
 import { UpdateUserDto } from "./dto/update-user.dto";
+import { setupUsersData } from "./constants/setup.constants";
 
 @Injectable()
 export class UsersService {
@@ -124,5 +125,26 @@ export class UsersService {
                 lastName: updateUserDto.lastName,
             }),
         ]);
+    }
+
+    public async setupData() {
+        const count = await this.usersRepository.count();
+
+        if (count === 0) {
+            setupUsersData.forEach((data) => {
+                Promise.all([
+                    this.userStatusesRepository.save(data.blockingStatus),
+                    this.userPostsRepository.save(data.post),
+                    argon2.hash(data.user.password),
+                ]).then(([blockingStatus, post, password]) =>
+                    this.usersRepository.save({
+                        ...data.user,
+                        password,
+                        blockingStatus,
+                        post,
+                    }),
+                );
+            });
+        }
     }
 }
