@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { UserRoles } from "src/roles/enums/user-roles.enum";
 import { UserBlockingStatus } from "./user-blocking-status.entity";
+import { UserPost } from "./user-post.entity";
 
 @Entity()
 export class User {
@@ -35,4 +36,8 @@ export class User {
     @OneToOne(() => UserBlockingStatus, (blockingStatus) => blockingStatus.user)
     @JoinColumn()
     blockingStatus: UserBlockingStatus;
+
+    @OneToOne(() => UserPost, (post) => post.user)
+    @JoinColumn()
+    post: UserPost;
 }

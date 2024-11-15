@@ -7,4 +7,10 @@ export const defaultUserBlockingStatus = {
     reason: null,
 };
 
+export const defaultUserPost = {
+    management: null,
+    department: null,
+    post: null,
+};
+
 export const defaultUserRole = UserRoles.USER;

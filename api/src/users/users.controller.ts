@@ -1,11 +1,11 @@
-import { Controller, Get, Post, Body, Patch, UseGuards } from "@nestjs/common";
+import { Controller, Get, Post, Body, Patch, Param, UseGuards } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
-import { ChangeUserStatusDto } from "./dto/change-user-status.dto";
-import { JwtAuthGuard } from "src/auth/guards/jwt-auth.guard";
-import { RolesGuard } from "src/roles/guards/roles.guard";
+import { UpdateUserDto } from "./dto/update-user.dto";
 import { ProvidesOperation } from "src/roles/decorators/provides-operation.decorator";
+import { JwtAuthGuard } from "src/auth/guards/jwt-auth.guard";
 import { Operations } from "src/roles/enums/operations.enum";
+import { RolesGuard } from "src/roles/guards/roles.guard";
 
 @Controller("users")
 export class UsersController {
@@ -23,10 +23,15 @@ export class UsersController {
         return this.usersService.findAll();
     }
 
-    @Patch("/status")
-    @ProvidesOperation(Operations.CHANGE_USER_STATUS)
+    @Get(":id")
+    public async findOneBuId(@Param("id") id: string) {
+        return await this.usersService.findOneById(id);
+    }
+
+    @Patch(":id")
+    @ProvidesOperation(Operations.UPDATE_USER)
     @UseGuards(JwtAuthGuard, RolesGuard)
-    public async changeUserStatus(@Body() changeUserStatusDto: ChangeUserStatusDto) {
-        return await this.usersService.changeStatus(changeUserStatusDto);
+    public async update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
+        return await this.usersService.update(id, updateUserDto);
     }
 }

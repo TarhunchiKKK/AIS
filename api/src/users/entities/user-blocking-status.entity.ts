@@ -11,7 +11,7 @@ export class UserBlockingStatus {
     status: UserStatus;
 
     @Column({ nullable: true, default: null })
-    blokingTime: Date | null;
+    blockingTime: Date | null;
 
     @Column({ nullable: true, default: null })
     reason: string | null;

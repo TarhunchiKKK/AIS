@@ -1,3 +1,3 @@
 export type TContentWrapperProps = {
-    children: JSX.Element | JSX.Element[];
+    children: undefined | JSX.Element | JSX.Element[];
 };

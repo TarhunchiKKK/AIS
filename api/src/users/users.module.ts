@@ -7,10 +7,11 @@ import { UserBlockingStatus } from "./entities/user-blocking-status.entity";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { JwtModule } from "@nestjs/jwt";
 import { RolesModule } from "src/roles/roles.module";
+import { UserPost } from "./entities/user-post.entity";
 
 @Module({
     imports: [
-        TypeOrmModule.forFeature([User, UserBlockingStatus]),
+        TypeOrmModule.forFeature([User, UserBlockingStatus, UserPost]),
         ConfigModule,
         JwtModule.registerAsync({
             imports: [ConfigModule],

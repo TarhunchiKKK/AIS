@@ -1,5 +1,5 @@
 import { Table } from "@/shared/ui";
-import { useUsersTable } from "./useUsersTable";
+import { useUsersTable } from "./hooks";
 import { renderHeaders, renderRow } from "./ui";
 import { TUserData } from "./types";
 

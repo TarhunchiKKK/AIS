@@ -6,5 +6,11 @@ export function transformFullUser(user: TFullUserResponse): TFullUser {
     return {
         ...user,
         createdAt: dateFormatter.createDateFromStr(user.createdAt),
+        blockingStatus: {
+            ...user.blockingStatus,
+            blockingTime: user.blockingStatus.blokingTime
+                ? dateFormatter.createDateFromStr(user.blockingStatus.blokingTime)
+                : null,
+        },
     };
 }

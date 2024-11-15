@@ -1,4 +1,4 @@
-import { validateEmail, validatePassword } from "../../helpers";
+import { validateEmail, validatePassword } from "@/entities/users";
 import { TFormState } from "./types";
 
 export function validateFormState(formState: TFormState) {

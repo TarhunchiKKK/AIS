@@ -5,24 +5,38 @@ import { BaseLayout } from "@/pages/BaseLayout";
 import { AdminPage } from "@/pages/admin";
 import { PrivilegentRoute } from "@/features/roles";
 import { Operations } from "@/features/roles/types";
+import { EditUserPage, UserPage } from "@/pages/users";
+import { ModalContextProvider } from "@/shared/ui";
 
 export const router = createBrowserRouter([
     {
         path: routes.Home,
         children: [
             {
-                index: true,
-                element: <>Home</>,
-            },
-            {
                 element: <BaseLayout />,
                 children: [
+                    {
+                        path: routes.Home,
+                        element: <>Home</>,
+                    },
                     {
                         path: routes.Admin,
                         element: (
                             <PrivilegentRoute operation={Operations.SEE_USERS}>
                                 <AdminPage />
                             </PrivilegentRoute>
+                        ),
+                    },
+                    {
+                        path: routes.User,
+                        element: <UserPage />,
+                    },
+                    {
+                        path: routes.EditUser,
+                        element: (
+                            <ModalContextProvider>
+                                <EditUserPage />
+                            </ModalContextProvider>
                         ),
                     },
                 ],
