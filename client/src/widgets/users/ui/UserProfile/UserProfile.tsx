@@ -10,15 +10,17 @@ import { ArrowBack } from "@/shared/ui";
 export function UserProfile({ user }: TUserProfileProps) {
     return (
         <>
-            <div className="flex flex-row justify-start mb-2">
+            <div className="flex flex-row justify-start mb-1 md:mb-2">
                 <ArrowBack />
             </div>
 
-            <div className="flex flex-row justify-between items-start">
-                <div className="flex flex-col justify-between items-start gap-3">
-                    <span className="text-xl font-bold">{`${user.lastName} ${user.firstName}`}</span>
-                    <span>{user.email}</span>
-                    <span>{`Зарегистрирован(а) ${dateFormatter.formatDate(user.createdAt)}`}</span>
+            <div className="flex flex-col md:flex-row justify-between items-start gap-3">
+                <div className="flex flex-col justify-between items-start gap-2 md:gap-3 max-w-[90%] md:max-w-[70%]">
+                    <span className="text-lg sm:text-xl font-bold">{`${user.lastName} ${user.firstName}`}</span>
+                    <span className="text-sm sm:text-base">{user.email}</span>
+                    <span className="text-sm sm:text-base">{`Зарегистрирован(а) ${dateFormatter.formatDate(
+                        user.createdAt,
+                    )}`}</span>
                     {renderUserPost(user.post)}
                 </div>
 

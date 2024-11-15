@@ -4,11 +4,13 @@ import { UsersTable } from "@/widgets/users";
 export function AdminPage() {
     return (
         <ContentWrapper>
-            <div className="mb-2 flex flex-row justify-start">
+            <div className="mb-1 md:mb-2 flex flex-row justify-start">
                 <ArrowBack />
             </div>
 
-            <UsersTable />
+            <div className="overflow-x-scroll">
+                <UsersTable />
+            </div>
         </ContentWrapper>
     );
 }

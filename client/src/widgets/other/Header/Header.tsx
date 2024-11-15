@@ -19,7 +19,7 @@ export function Header() {
     };
 
     return (
-        <header className="py-4 px-4 md:px-0">
+        <header className="py-2 md:py-4 px-4 md:px-0">
             <div className="container mx-auto">
                 <ContentWrapper>
                     <div className="flex flex-row-reverse justify-between items-center">
