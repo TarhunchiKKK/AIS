@@ -1,3 +1,4 @@
+import { validateFirstName, validateLastName } from "@/entities/users";
 import { TFormState } from "./types";
 
 export const trimFormState = (formState: TFormState): TFormState => {
@@ -15,3 +16,12 @@ export const trimFormState = (formState: TFormState): TFormState => {
         },
     };
 };
+
+export function validateFormState(formState: TFormState) {
+    const { errors: firstNameErrors } = validateFirstName(formState.firstName);
+    const { errors: lastNameErrors } = validateLastName(formState.lastName);
+
+    const errors = firstNameErrors.concat(lastNameErrors);
+
+    return errors;
+}

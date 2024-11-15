@@ -2,7 +2,6 @@ import { TUserBlockingStatus, TUserPost, UserStatus } from "@/entities/users";
 import { dateFormatter } from "@/shared/utils";
 
 export const renderUserStatus = (userStatus: TUserBlockingStatus) => {
-    console.info(userStatus);
     switch (userStatus.status) {
         case UserStatus.ACTIVE: {
             return <span className="text-xl text-green-600">Active</span>;

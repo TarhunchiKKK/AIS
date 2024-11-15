@@ -1,14 +1,16 @@
-import { ArrowBack, Button, ContentWrapper } from "@/shared/ui";
+import { ArrowBack, Button, ContentWrapper, ErrorMessage } from "@/shared/ui";
 import { useEditUser } from "./hooks";
 import { TEditUserFormProps } from "./types";
 import { UserInfoEditFormPart } from "../UserInfoEditFormPart";
 import { UserPostDropdowns } from "../UserPostDropdowns";
 
 export function EditUserForm({ user, onSubmit }: TEditUserFormProps) {
-    const { formState, handleChangeState, handleSubmit } = useEditUser(user, onSubmit);
+    const { formState, validationErrors, handleChangeState, handleSubmit } = useEditUser(user, onSubmit);
 
     return (
         <form onSubmit={handleSubmit} className="w-full">
+            {validationErrors.length > 0 && <ErrorMessage content={validationErrors[0]} />}
+
             <div className="mb-8 relative">
                 <ContentWrapper>
                     <h3 className="mb-6 text-center font-bold text-2xl">Основное</h3>
@@ -30,7 +32,7 @@ export function EditUserForm({ user, onSubmit }: TEditUserFormProps) {
             </div>
 
             <div className="flex justify-center">
-                <Button content="Отправить" size="lg" />
+                <Button content="Отправить" size="lg" disabled={validationErrors.length > 0} />
             </div>
         </form>
     );

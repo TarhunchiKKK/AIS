@@ -5,13 +5,13 @@ import { TextField } from "@mui/material";
 import { useSignUpForm } from "./hooks";
 
 export function SignUpForm() {
-    const { formState, handlers, errors } = useSignUpForm();
+    const { formState, handlers, validationErrors } = useSignUpForm();
 
     return (
         <form onSubmit={handlers.submit} className="w-full px-6 py-6">
             <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
 
-            {errors.length > 0 && <ErrorMessage content={errors[0]} />}
+            {validationErrors.length > 0 && <ErrorMessage content={validationErrors[0]} />}
 
             <div className="mb-4">
                 <TextField label="Имя" fullWidth value={formState.firstName} onChange={handlers.changeFirstName} />
@@ -46,7 +46,7 @@ export function SignUpForm() {
             </div>
 
             <div className="flex flex-row justify-center items-center mb-8">
-                <Button size="lg" content="Отправить" disabled={errors.length > 0} />
+                <Button size="lg" content="Отправить" disabled={validationErrors.length > 0} />
             </div>
 
             <Link to={routes.SignIn} className="block mx-auto text-center text-blue">

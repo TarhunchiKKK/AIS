@@ -78,6 +78,6 @@ export function useSignUpForm() {
     return {
         formState,
         handlers,
-        errors: validationErrors,
+        validationErrors,
     };
 }
