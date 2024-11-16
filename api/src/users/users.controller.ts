@@ -10,7 +10,9 @@ import { TAuthorizedRequest } from "src/auth/types/authorized-request.type";
 
 @Controller("users")
 export class UsersController {
-    constructor(private readonly usersService: UsersService) {}
+    constructor(private readonly usersService: UsersService) {
+        this.setup();
+    }
 
     @Post()
     public async create(@Body() createUserDto: CreateUserDto) {
@@ -40,5 +42,9 @@ export class UsersController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     public async update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
         return await this.usersService.update(id, updateUserDto);
+    }
+
+    public async setup() {
+        await this.usersService.setupData();
     }
 }
