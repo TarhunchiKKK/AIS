@@ -8,7 +8,7 @@ export function AdminPage() {
                 <ArrowBack />
             </div>
 
-            <div className="overflow-x-scroll">
+            <div className="overflow-x-auto">
                 <UsersTable />
             </div>
         </ContentWrapper>
