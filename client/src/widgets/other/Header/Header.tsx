@@ -4,6 +4,7 @@ import { Operations } from "@/features/roles/types";
 import { routes } from "@/shared/constants";
 import { Button, ContentWrapper } from "@/shared/ui";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "./Logo.png";
 
 export function Header() {
     const navigate = useNavigate();
@@ -22,14 +23,20 @@ export function Header() {
         <header className="py-2 md:py-4 px-4 md:px-0">
             <div className="container mx-auto">
                 <ContentWrapper>
-                    <div className="flex flex-row-reverse justify-between items-center">
-                        <Button content={buttonContent} size="lg" onClick={handleButtonClick} />
+                    <div className="flex flex-row justify-between items-center">
+                        <Link to={routes.Home}>
+                            <img src={Logo} className="w-12 h-12" />
+                        </Link>
 
-                        <PrivilegentElement operation={Operations.SEE_USERS}>
-                            <Link to={routes.Admin} className="underline">
-                                Пользователи
-                            </Link>
-                        </PrivilegentElement>
+                        <div className="flex flex-col-reverse sm:flex-row-reverse justify-between items-center gap-2 sm:gap-8">
+                            <Button content={buttonContent} size="md" onClick={handleButtonClick} />
+
+                            <PrivilegentElement operation={Operations.SEE_USERS}>
+                                <Link to={routes.Admin} className="underline">
+                                    Пользователи
+                                </Link>
+                            </PrivilegentElement>
+                        </div>
                     </div>
                 </ContentWrapper>
             </div>

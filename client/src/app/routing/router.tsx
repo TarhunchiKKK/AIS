@@ -15,16 +15,16 @@ export const router = createBrowserRouter([
         path: routes.Home,
         children: [
             {
-                path: routes.Home,
-                element: (
-                    <ProtectedRoute redirectRoute={routes.SignIn}>
-                        <HomePage />
-                    </ProtectedRoute>
-                ),
-            },
-            {
                 element: <BaseLayout />,
                 children: [
+                    {
+                        path: routes.Home,
+                        element: (
+                            <ProtectedRoute redirectRoute={routes.SignIn}>
+                                <HomePage />
+                            </ProtectedRoute>
+                        ),
+                    },
                     {
                         path: routes.Admin,
                         element: (
