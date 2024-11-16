@@ -1,0 +1,1 @@
+export { DocumentStyles } from "./DocumentStyles";

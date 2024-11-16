@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 
 // reused context for modal windows
 export function ModalContextProvider({ children }: TModalContextProps) {
-    const [element, setElement] = useState<JSX.Element | null>();
+    const [element, setElement] = useState<JSX.Element | null>(null);
 
     const open = (modal: JSX.Element) => {
         setElement(modal);

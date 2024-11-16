@@ -1,4 +1,5 @@
 export { ValidationBuilder } from "./models";
+export { haveEmptyFields } from "./helpers";
 export {
     AlphaBeticSymbolsValidator,
     EmailValidator,

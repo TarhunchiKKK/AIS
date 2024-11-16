@@ -5,12 +5,15 @@ import { store } from "./store";
 import { router } from "./routing";
 import "./styles/index.css";
 import "react-toastify/dist/ReactToastify.css";
+import { DocumentStyles } from "@/shared/ui";
 
 export function App() {
     return (
         <Provider store={store}>
-            <RouterProvider router={router} />
-            <ToastContainer position="bottom-left" autoClose={1500} bodyClassName="text-black" hideProgressBar />
+            <DocumentStyles>
+                <RouterProvider router={router} />
+                <ToastContainer position="bottom-left" autoClose={1500} bodyClassName="text-black" hideProgressBar />
+            </DocumentStyles>
         </Provider>
     );
 }

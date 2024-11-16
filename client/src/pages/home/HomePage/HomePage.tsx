@@ -1,14 +1,15 @@
 import { Header } from "@/widgets/other";
 import { paragraphs } from "./constants";
+import { ContentWrapper } from "@/shared/ui";
 
 export function HomePage() {
     return (
         <>
             <Header />
 
-            <main className="mt-2 md:mt-4 py-2 md:py-4 px-4 md:px-0">
+            <main className="py-2 md:py-4 px-4 md:px-0">
                 <div className="container mx-auto">
-                    <div>
+                    <ContentWrapper>
                         {paragraphs.map((paragraph, index) => (
                             <p
                                 key={index}
@@ -17,7 +18,7 @@ export function HomePage() {
                                 {paragraph}
                             </p>
                         ))}
-                    </div>
+                    </ContentWrapper>
                 </div>
             </main>
         </>
