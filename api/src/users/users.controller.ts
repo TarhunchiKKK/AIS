@@ -10,9 +10,7 @@ import { TAuthorizedRequest } from "src/auth/types/authorized-request.type";
 
 @Controller("users")
 export class UsersController {
-    constructor(private readonly usersService: UsersService) {
-        this.setup();
-    }
+    constructor(private readonly usersService: UsersService) {}
 
     @Post()
     public async create(@Body() createUserDto: CreateUserDto) {
