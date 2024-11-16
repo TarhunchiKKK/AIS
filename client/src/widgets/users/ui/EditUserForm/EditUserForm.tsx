@@ -9,7 +9,7 @@ export function EditUserForm({ user, onSubmit }: TEditUserFormProps) {
 
     return (
         <form className="w-full">
-            <div className="flex flex-row justify-start">
+            <div className="flex flex-row justify-start mb-1">
                 <ArrowBack />
             </div>
 
