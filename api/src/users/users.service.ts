@@ -127,6 +127,7 @@ export class UsersService {
         ]);
     }
 
+    // -----------------------------For deploy-------------------------------
     public async setupData() {
         const count = await this.usersRepository.count();
 

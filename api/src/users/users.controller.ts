@@ -44,6 +44,8 @@ export class UsersController {
         return await this.usersService.update(id, updateUserDto);
     }
 
+    // -----------------------------For deploy-------------------------------
+    @Post("/setup")
     public async setup() {
         await this.usersService.setupData();
     }
