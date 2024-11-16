@@ -23,20 +23,19 @@ export function Header() {
         <header className="py-2 md:py-4 px-4 md:px-0">
             <div className="container mx-auto">
                 <ContentWrapper>
-                    <div className="flex flex-row justify-between items-center">
-                        <Link to={routes.Home}>
-                            <img src={Logo} className="w-12 h-12" />
-                        </Link>
-
-                        <div className="flex flex-col-reverse sm:flex-row-reverse justify-between items-center gap-2 sm:gap-8">
-                            <Button content={buttonContent} size="md" onClick={handleButtonClick} />
-
+                    <div className="flex flex-row-reverse justify-between items-center">
+                        <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-8">
                             <PrivilegentElement operation={Operations.SEE_USERS}>
                                 <Link to={routes.Admin} className="underline">
                                     Пользователи
                                 </Link>
                             </PrivilegentElement>
+                            <Button content={buttonContent} size="md" onClick={handleButtonClick} />
                         </div>
+
+                        <Link to={routes.Home}>
+                            <img src={Logo} className="w-12 h-12" />
+                        </Link>
                     </div>
                 </ContentWrapper>
             </div>
