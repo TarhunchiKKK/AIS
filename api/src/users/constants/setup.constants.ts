@@ -65,7 +65,7 @@ export const setupUsersData = [
             lastName: "Петров",
             email: "admin1@gmail.com",
             password: "Password123+",
-            role: UserRoles.USER,
+            role: UserRoles.ADMIN,
         },
         blockingStatus: {
             status: UserStatus.ACTIVE,
