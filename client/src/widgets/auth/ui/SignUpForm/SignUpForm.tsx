@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { routes } from "@/shared/constants";
 import { TextField } from "@mui/material";
 import { useSignUpForm } from "./hooks";
+import { haveEmptyFields } from "@/shared/utils/validation";
 
 export function SignUpForm() {
     const { formState, handlers, validationErrors } = useSignUpForm();
@@ -46,7 +47,11 @@ export function SignUpForm() {
             </div>
 
             <div className="flex flex-row justify-center items-center mb-4 md:mb-8">
-                <Button size="lg" content="Отправить" disabled={validationErrors.length > 0} />
+                <Button
+                    size="lg"
+                    content="Отправить"
+                    disabled={haveEmptyFields(formState) || validationErrors.length > 0}
+                />
             </div>
 
             <Link to={routes.SignIn} className="block mx-auto text-center text-blue">
