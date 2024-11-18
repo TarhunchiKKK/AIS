@@ -1,1 +1,1 @@
-export const documentClasses = ["bg-gradient-to-r", "from-cyan-500", "to-blue-500"];
+export const documentClasses = ["bg-[#2C64F722]"];

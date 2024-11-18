@@ -5,28 +5,30 @@ import { renderCard } from "./ui";
 export function HomePage() {
     return (
         <>
-            <div className="mb-4">
+            <div className="mt-8 md:mt-14 mb-10 md:mb-14 lg:mb-20">
                 <ContentWrapper>
-                    {paragraphs.map((paragraph, index) => (
-                        <div key={index} className="mb-4 last:mb-0">
-                            <h3 className="font-bold text-lg mb-2">{paragraph.title}</h3>
-
-                            <p className="text-sm md:text-base indent-8 md:indent-12 text-justify mb-1 last:mb-0">
-                                {paragraph.content}
-                            </p>
-                        </div>
-                    ))}
+                    <h1 className="text-[20px] sm:text-[36px] lg:text-[48px] xl:text-[54px] leading-[28px] sm:leading-[48px] lg:leading-[60px] xl:leading-[70px] font-normal">
+                        Автоматизированная система учета и контроля исполнения локальных нормативных актов
+                    </h1>
                 </ContentWrapper>
             </div>
 
-            <div className="mb-4">
-                <ContentWrapper>
-                    <h3 className="text-center font-bold text-lg sm:text-xl md:text-2xl mb-4">Возможности системы</h3>
+            <div className="mb-8 md:mb-20">
+                {paragraphs.map((paragraph, index) => (
+                    <div key={index} className="mb-4 sm:mb-6 lg:mb-8 last:mb-0">
+                        <h3 className="font-bold text-[16px] sm:text-[24px] lg:text-[32px] mb-2">{paragraph.title}</h3>
 
-                    <div className="flex flex-row justify-around items-center flex-wrap gap-6">
-                        {cards.map((card) => renderCard(card.title, card.image, card.content))}
+                        <p className="text-[12px] sm:text-[16px] lg:text-[20px] text-justify">{paragraph.content}</p>
                     </div>
-                </ContentWrapper>
+                ))}
+            </div>
+
+            <div className="mb-4">
+                <h3 className="font-bold text-[20px] sm:text-[28px] mb-4 sm:mb-8">Возможности системы</h3>
+
+                <div className="flex flex-col md:flex-row justify-between items-center flex-wrap xl:flex-nowrap gap-6">
+                    {cards.map((card) => renderCard(card.title, card.image, card.content))}
+                </div>
             </div>
         </>
     );
